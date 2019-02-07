@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the ASSERTS package.
+ *
+ * (c) Jitendra Adhikari <jiten.adhikary@gmail.com>
+ *     <https://github.com/adhocore>
+ *
+ * Licensed under MIT license.
+ */
+
 namespace Ahc\Asserts;
 
 trait Asserts
@@ -12,7 +21,7 @@ trait Asserts
         $this->assertContains($expected, $actual, "$message$expected doesnot contain $actual");
     }
 
-    public function assertJsonSubsets($expected,  /* more expected ...*/ $actual)
+    public function assertJsonSubsets($expected, /* more expected ...*/ $actual)
     {
         $expected = \func_get_args();
         $actual   = \array_pop($expected);
