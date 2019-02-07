@@ -17,8 +17,9 @@ trait Asserts
     {
         $actual   = \json_encode($actual);
         $expected = \json_encode($expected);
+        $expected = \trim($expected, '{}');
 
-        $this->assertContains($expected, $actual, "$message$expected doesnot contain $actual");
+        $this->assertContains($expected, $actual, "$message$actual doesnot contain $expected");
     }
 
     public function assertJsonSubsets($expected, /* more expected ...*/ $actual)
