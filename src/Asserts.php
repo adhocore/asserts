@@ -42,9 +42,6 @@ trait Asserts
             return;
         }
 
-        $expected  = \round($expected, $precision);
-        $actual    = \round($actual, $precision);
-
         $this->assertEquals($expected, $actual, $message, \pow(10, 0 - \abs($precision)));
     }
 
