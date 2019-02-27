@@ -13,8 +13,6 @@ namespace Ahc\Asserts;
 
 trait Asserts
 {
-    const DEFAULT_PRECISION = 6;
-
     public function assertJsonSubset($expected, $actual, string $message = null)
     {
         $actual   = \json_encode($actual);
@@ -36,7 +34,7 @@ trait Asserts
 
     public function assertFloatEquals(float $expected, float $actual, int $precision = null, string $message = null)
     {
-        $precision = $precision ?? static::DEFAULT_PRECISION;
+        $precision = $precision ?: 6;
 
         if (\function_exists('bccomp')) {
             $this->assertSame(0, \bccomp($expected, $actual, $precision), $message);
