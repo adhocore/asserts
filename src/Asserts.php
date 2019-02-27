@@ -56,4 +56,11 @@ trait Asserts
             $this->assertArrayHasKey($key, $actualArray, $message);
         }
     }
+
+    public function assertAll($actual, array $assertions, array $messages = [])
+    {
+        foreach ($assertions as $assert => $expected) {
+            $this->{$assert}($expected, $actual, $messages[$assert] ?? null);
+        }
+    }
 }
