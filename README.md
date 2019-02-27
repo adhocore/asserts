@@ -15,7 +15,7 @@ composer require --dev adhocore/asserts
 
 ## Usage
 ```php
-use Ahc\Asserts;
+use Ahc\Asserts\Asserts;
 
 class MyTest extends PHPUnit\Framework\Testcase
 {
