@@ -49,4 +49,11 @@ trait Asserts
 
         $this->assertEquals($expected, $actual, $message, \pow(10, 0 - \abs($precision)));
     }
+
+    public function assertArrayHasKeys(array $expectedKeys, array $actualArray, string $message = null)
+    {
+        foreach ($expectedKeys as $key) {
+            $this->assertArrayHasKey($key, $actualArray, $message);
+        }
+    }
 }
