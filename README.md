@@ -26,6 +26,22 @@ class MyTest extends PHPUnit\Framework\Testcase
         $this->assertJsonSubset($expectedSubset, $actualJson);
 
         $this->assertJsonSubsets($expectedSubset1, $expectedSubset2, ... , $actualJson);
+
+        $this->assertFloatEquals($expected = 1.66666666, $actual = 1.666666689, $precision = 4);
+
+        $this->assertArrayHasKeys($expected = ['a', 'b'], $actual = ['a' => 1, 'b' => 2]);
+
+        $this->assertAll(
+            $expectations = [
+                'equals' => 1,
+                'lessThan' => 10,
+                'greaterThan' => 0,
+            ],
+            $actual = 1,
+            $messages = [
+                'greaterThan' => 'Should be postitive number',
+            ]
+        );
     }
 }
 ```
