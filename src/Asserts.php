@@ -59,7 +59,7 @@ trait Asserts
                 $assert = 'assert' . ucfirst($assert);
             }
 
-            $msgKey = \str_replace('assert', '', $assert);
+            $msgKey = \lcfirst(\str_replace('assert', '', $assert));
 
             $this->{$assert}($expected, $actual, $messages[$assert] ?? $messages[$msgKey] ?? null);
         }
