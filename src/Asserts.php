@@ -52,10 +52,16 @@ trait Asserts
         }
     }
 
-    public function assertAll($actual, array $assertions, array $messages = [])
+    public function assertAll(array $expectations, $actual, array $messages = [])
     {
-        foreach ($assertions as $assert => $expected) {
-            $this->{$assert}($expected, $actual, $messages[$assert] ?? null);
+        foreach ($expectations as $assert => $expected) {
+            if (strpos($assert, 'assert') === false) {
+                $assert = 'assert' . ucfirst($assert);
+            }
+
+            $msgKey = \str_replace('assert', '', $assert);
+
+            $this->{$assert}($expected, $actual, $messages[$assert] ?? $messages[$msgKey] ?? null);
         }
     }
 }
