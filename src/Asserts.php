@@ -13,7 +13,7 @@ namespace Ahc\Asserts;
 
 trait Asserts
 {
-    public function assertJsonSubset($expected, $actual, string $message = null)
+    public function assertJsonSubset($expected, $actual, string $message = '')
     {
         $actual   = \json_encode($actual);
         $expected = \json_encode($expected);
@@ -32,10 +32,8 @@ trait Asserts
         }
     }
 
-    public function assertFloatEquals(float $expected, float $actual, int $precision = null, string $message = null)
+    public function assertFloatEquals(float $expected, float $actual, int $precision = 6, string $message = '')
     {
-        $precision = $precision ?: 6;
-
         if (\function_exists('bccomp')) {
             $this->assertSame(0, \bccomp($expected, $actual, $precision), $message);
 
@@ -45,7 +43,7 @@ trait Asserts
         $this->assertEquals($expected, $actual, $message, \pow(10, 0 - \abs($precision)));
     }
 
-    public function assertArrayHasKeys(array $expectedKeys, array $actualArray, string $message = null)
+    public function assertArrayHasKeys(array $expectedKeys, array $actualArray, string $message = '')
     {
         foreach ($expectedKeys as $key) {
             $this->assertArrayHasKey($key, $actualArray, $message);
@@ -55,8 +53,8 @@ trait Asserts
     public function assertAll(array $expectations, $actual, array $messages = [])
     {
         foreach ($expectations as $assert => $expected) {
-            if (strpos($assert, 'assert') === false) {
-                $assert = 'assert' . ucfirst($assert);
+            if (\strpos($assert, 'assert') === false) {
+                $assert = 'assert' . \ucfirst($assert);
             }
 
             $msgKey = \lcfirst(\str_replace('assert', '', $assert));
