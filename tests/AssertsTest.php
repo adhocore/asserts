@@ -83,4 +83,20 @@ class AssertsTest extends TestCase
 
         $this->assertAll($expectations, $actual);
     }
+
+    public function testAssertIsAssocArray()
+    {
+        $assocArray = [
+            'key' => 'value',
+        ];
+
+        $this->assertIsAssocArray($assocArray);
+    }
+
+    public function testAssertIsNotAssocArray()
+    {
+        $assocArray = [1, 2, 3, 4, 5];
+
+        $this->assertIsNotAssocArray($assocArray);
+    }
 }
