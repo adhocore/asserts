@@ -62,4 +62,14 @@ trait Asserts
             $this->{$assert}($expected, $actual, $messages[$assert] ?? $messages[$msgKey] ?? null);
         }
     }
+
+    public function assertIsAssocArray(array $array, string $message = '')
+    {
+        $this->assertTrue(\array_keys($array) !== \range(0, \count($array) - 1), $message);
+    }
+
+    public function assertIsNotAssocArray(array $array, string $message = '')
+    {
+        $this->assertFalse(\array_keys($array) !== \range(0, \count($array) - 1), $message);
+    }
 }
