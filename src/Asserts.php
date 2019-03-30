@@ -72,4 +72,18 @@ trait Asserts
     {
         $this->assertFalse(\array_keys($array) !== \range(0, \count($array) - 1), $message);
     }
+
+    public function assertFileIsExecutable(string $filePath, string $message = '')
+    {
+        \clearstatcache();
+
+        $this->assertTrue(\is_executable($filePath), $message);
+    }
+
+    public function assertFileIsNotExecutable(string $filePath, string $message = '')
+    {
+        \clearstatcache();
+
+        $this->assertFalse(\is_executable($filePath), $message);
+    }
 }

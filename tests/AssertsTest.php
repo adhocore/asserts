@@ -99,4 +99,14 @@ class AssertsTest extends TestCase
 
         $this->assertIsNotAssocArray($assocArray);
     }
+
+    public function testAssertFileIsExecutable()
+    {
+        $this->assertFileIsExecutable('/bin/sh');
+    }
+
+    public function testAssertFileIsNotExecutable()
+    {
+        $this->assertFileIsNotExecutable(__DIR__ . '/composer.json');
+    }
 }
