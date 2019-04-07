@@ -16,8 +16,9 @@ composer require --dev adhocore/asserts
 ## Usage
 ```php
 use Ahc\Asserts\Asserts;
+use PHPUnit\Framework\TestCase;
 
-class MyTest extends PHPUnit\Framework\Testcase
+class MyTest extends Testcase
 {
     use Asserts;
 
@@ -30,6 +31,14 @@ class MyTest extends PHPUnit\Framework\Testcase
         $this->assertFloatEquals($expected = 1.66666666, $actual = 1.666666689, $precision = 4);
 
         $this->assertArrayHasKeys($expected = ['a', 'b'], $actual = ['a' => 1, 'b' => 2]);
+
+        $this->assertIsAssocArray(['key' => 'value']);
+
+        $this->assertIsNotAssocArray([1, 2, 3, 4, 5]);
+
+        $this->assertFileIsExecutable('/bin/sh');
+
+        $this->assertFileIsNotExecutable('/bin/not-found');
 
         $this->assertAll(
             $expectations = [
